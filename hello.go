@@ -12,8 +12,8 @@ import (
   "bufio"
 )
 
-var moduleName = "TicketDetail"
-var packageName = "de.jochen-schweizer.jsnow.modules.ticketDetail"
+var moduleName = "Discount"
+var packageName = "de.jochen-schweizer.jsnow.modules.Discount"
 var templateDirectory string
 
 func main() {
@@ -41,7 +41,8 @@ func printFile(directory string, fileName string) {
 
   r := strings.NewReplacer("##MODULENAME##", moduleName, "##PACKAGENAME##", packageName, "##USERNAME##", getUsername(), "##DATE##", getDate())
   newString := r.Replace(string(data))
-  ioutil.WriteFile(outputDir + "/TEST" + fileName, []byte(newString), 0777)
+
+  ioutil.WriteFile(outputDir + "/" + moduleName + fileName, []byte(newString), 0777)
 }
 
 func getUsername() string {

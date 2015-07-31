@@ -1,11 +1,10 @@
-package ##PACKAGENAME##;
+package de.jochen_schweizer.jsnow.module.##MODULENAME##;
 
 import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
 import de.jochen_schweizer.jsnow.application.JSNowModule;
-import de.jochen_schweizer.jsnow.module.common.tickets.TicketsPersistence;
 
 /**
  * Created by ##USERNAME## on ##DATE##.
@@ -19,18 +18,18 @@ public class ##MODULENAME##Module {
 
     private ##MODULENAME##PresenterOutput mOutput;
 
-    public TicketDetailModule(##MODULENAME##PresenterOutput output) {
+    public ##MODULENAME##Module(##MODULENAME##PresenterOutput output) {
         mOutput = output;
     }
 
     @Provides
     @Singleton
-    public ##MODULENAME##InteractorInput provide##MODULENAME##InteractorInput(TicketsPersistence ticketsPersistence) {
-        return new ##MODULENAME##Interactor(ticketsPersistence);
+    public ##MODULENAME##InteractorInput provide##MODULENAME##InteractorInput() {
+        return new ##MODULENAME##Interactor();
     }
 
     @Provides @Singleton public ##MODULENAME##PresenterInput provide##MODULENAME##PresenterInput(##MODULENAME##InteractorInput interactor) {
-        ##MODULENAME##Presenter presenter = new TicketDetailPresenter(mOutput, interactor);
+        ##MODULENAME##Presenter presenter = new ##MODULENAME##Presenter(mOutput, interactor);
         interactor.setInteractorOutput(presenter);
         return presenter;
     }

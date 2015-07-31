@@ -1,20 +1,17 @@
-package ##PACKAGENAME##;
-
-import de.jochen_schweizer.jsnow.module.common.tickets.TicketsPersistence;
+package de.jochen_schweizer.jsnow.module.##MODULENAME##;
 
 /**
  * Created by ##USERNAME## on ##DATE##.
  */
 public class ##MODULENAME##Interactor implements ##MODULENAME##InteractorInput {
 
-    private ##MODULENAME##PresenterOutput mOutput;
+    private ##MODULENAME##InteractorOutput mOutput;
 
-    public ##MODULENAME##Interactor(TicketsPersistence ticketsPersistence) {
-
+    public ##MODULENAME##Interactor() {
     }
 
     @Override
-    public void setInteractorOutput(##MODULENAME##PresenterOutput presenter) {
+    public void setInteractorOutput(##MODULENAME##InteractorOutput presenter) {
         mOutput = presenter;
     }
 }
