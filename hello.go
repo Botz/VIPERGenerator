@@ -10,21 +10,27 @@ import (
   "fmt"
   "os"
   "bufio"
+  "github.com/kardianos/osext"
 )
 
 var moduleName string
 var packageName string
 var templateDirectory string
-var outputDir = "./output"
+var outputDir string
+
 func main() {
   getConsoleInput()
   log.Println(" TTT" + templateDirectory + "TTT ")
   log.Println(moduleName)
-  var directory = "./templates/" + templateDirectory + "/"
+
+  executableDirectory, _ := osext.ExecutableFolder()
+  outputDir = executableDirectory + "/output"
+  var directory = executableDirectory + "/templates/" + templateDirectory + "/"
   var fileInfos, err = ioutil.ReadDir(directory)
   if err != nil {
     log.Fatal(err)
   }
+
 
   os.RemoveAll(outputDir)
   os.Mkdir(outputDir, 0777)
