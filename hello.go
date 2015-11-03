@@ -12,8 +12,8 @@ import (
   "bufio"
 )
 
-var moduleName = "Discount"
-var packageName = "de.jochen-schweizer.jsnow.modules.Discount"
+var moduleName = "PlacePicker"
+var packageName = "de.jochen-schweizer.jsnow.modules.placePicker"
 var templateDirectory string
 
 func main() {
