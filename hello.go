@@ -12,8 +12,8 @@ import (
   "bufio"
 )
 
-var moduleName = "PlacePicker"
-var packageName = "de.jochen-schweizer.jsnow.modules.placePicker"
+var moduleName string
+var packageName string
 var templateDirectory string
 
 func main() {
@@ -32,7 +32,7 @@ func main() {
 }
 
 func printFile(directory string, fileName string) {
-  var outputDir = "/tmp"
+  var outputDir = "./output"
   var data, err = ioutil.ReadFile(directory + "/" + fileName)
 
   if (err != nil) {
@@ -62,10 +62,15 @@ func getDate() string {
 
 func getConsoleInput() {
   reader := bufio.NewReader(os.Stdin)
-  fmt.Print("Enter template: (JAVA):")
+  fmt.Print("Enter template: (JAVA, SWIFT):")
   templateDirectory, _ = reader.ReadString('\n')
-  templateDirectory = strings.TrimRight(templateDirectory, "\n")
+  templateDirectory = strings.ToLower(strings.TrimRight(templateDirectory, "\n"))
   fmt.Print("Enter module name(e.g. BasketList): ")
   moduleName, _ = reader.ReadString('\n')
   moduleName = strings.TrimRight(moduleName, "\n")
+  if (templateDirectory != "swift") {
+    fmt.Print("Enter Java PackageName(e.g. com.company.mylittleProject):")
+    packageName, _ = reader.ReadString('\n')
+    packageName = strings.TrimRight(packageName, "\n")
+  }
 }
