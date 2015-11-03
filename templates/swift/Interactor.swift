@@ -1,5 +1,5 @@
 //
-//  LocationPickerInteractor.swift
+//  ##MODULENAME##Interactor.swift
 //  JSNow
 //
 //  Created by ##USERNAME## on ##DATE##.

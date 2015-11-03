@@ -15,7 +15,7 @@ import (
 var moduleName string
 var packageName string
 var templateDirectory string
-
+var outputDir = "./output"
 func main() {
   getConsoleInput()
   log.Println(" TTT" + templateDirectory + "TTT ")
@@ -26,13 +26,15 @@ func main() {
     log.Fatal(err)
   }
 
+  os.RemoveAll(outputDir)
+  os.Mkdir(outputDir, 0777)
+
   for _,fileInfo := range fileInfos {
     printFile(directory, fileInfo.Name())
   }
 }
 
 func printFile(directory string, fileName string) {
-  var outputDir = "./output"
   var data, err = ioutil.ReadFile(directory + "/" + fileName)
 
   if (err != nil) {
