@@ -8,7 +8,7 @@
 class ##MODULENAME##Wireframe: NSObject {
 
     func present##MODULENAME##Interface() {
-        let vc = ##MODULENAME##Controller()
+        let vc = ##MODULENAME##ViewController()
         let presenter = ##MODULENAME##Presenter()
         vc.eventHandler = presenter
         presenter.wireframe = self
