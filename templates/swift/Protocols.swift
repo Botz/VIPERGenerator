@@ -6,14 +6,18 @@
 //  Copyright © 2015 Jochen Schweizer GmbH. All rights reserved.
 //
 
-protocol ##MODULENAME##ViewInterface: class {
+protocol ##MODULENAME##ViewInterface {
+
 }
 
 protocol ##MODULENAME##ModuleInterface {
+
 }
 
 protocol ##MODULENAME##InteractorInput {
+
 }
 
-protocol ##MODULENAME##InteractorOutput: class {
+protocol ##MODULENAME##InteractorOutput {
+
 }

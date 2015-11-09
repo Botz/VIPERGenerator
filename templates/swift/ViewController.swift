@@ -29,7 +29,7 @@ class ##MODULENAME##ViewController: JSViewController {
     }
 }
 
-// MARK: LocationPickerViewInterface
+// MARK: ##MODULENAME##ViewInterface
 
 extension ##MODULENAME##ViewController: ##MODULENAME##ViewInterface {
 

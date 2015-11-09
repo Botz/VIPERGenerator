@@ -11,6 +11,7 @@ import XCGLogger
 class ##MODULENAME##Interactor: NSObject {
 
     weak var output: ##MODULENAME##InteractorOutput!
+
 }
 
 extension ##MODULENAME##Interactor: ##MODULENAME##InteractorInput {
