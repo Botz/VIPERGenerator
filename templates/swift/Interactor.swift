@@ -14,6 +14,8 @@ class ##MODULENAME##Interactor: NSObject {
 
 }
 
+// MARK: ##MODULENAME##InteractorInput
+
 extension ##MODULENAME##Interactor: ##MODULENAME##InteractorInput {
 
 }

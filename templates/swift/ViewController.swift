@@ -14,13 +14,13 @@ class ##MODULENAME##ViewController: JSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = JSUtils.LocalizedString("CHANGE_LOCATION_TITLE")
+        title = JSUtils.LocalizedString("##MODULENAME_UPPERCASE##")
 
     }
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        screenName = SCREEN_LOCATION_PICKER
+//        screenName = SCREEN_##MODULENAME_UPPERCASE##
         trackScreen()
     }
 
