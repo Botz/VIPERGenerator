@@ -1,6 +1,5 @@
 package main
 
-//import "fmt"
 import (
   "io/ioutil"
   "log"
@@ -20,19 +19,14 @@ var outputDir string
 
 func main() {
   getConsoleInput()
-  log.Println(" TTT" + templateDirectory + "TTT ")
-  log.Println(moduleName)
-
   executableDirectory, _ := osext.ExecutableFolder()
-  outputDir = executableDirectory + "/output"
   var directory = executableDirectory + "/templates/" + templateDirectory + "/"
   var fileInfos, err = ioutil.ReadDir(directory)
   if err != nil {
     log.Fatal(err)
   }
 
-
-  os.RemoveAll(outputDir)
+  outputDir = outputDir + "/" + moduleName
   os.Mkdir(outputDir, 0777)
 
   for _,fileInfo := range fileInfos {
@@ -70,7 +64,7 @@ func getDate() string {
 
 func getConsoleInput() {
   reader := bufio.NewReader(os.Stdin)
-  fmt.Print("Enter template: (JAVA, SWIFT):")
+  fmt.Print("Enter template: (JAVA, SWIFT): ")
   templateDirectory, _ = reader.ReadString('\n')
   templateDirectory = strings.ToLower(strings.TrimRight(templateDirectory, "\n"))
   fmt.Print("Enter module name(e.g. BasketList): ")
@@ -81,4 +75,8 @@ func getConsoleInput() {
     packageName, _ = reader.ReadString('\n')
     packageName = strings.TrimRight(packageName, "\n")
   }
+
+  fmt.Print("Enter output path name (absolute): ")
+  outputDir, _ = reader.ReadString('\n')
+  outputDir = strings.TrimRight(outputDir, "\n")
 }
