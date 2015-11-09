@@ -5,6 +5,7 @@
 //  Created by ##USERNAME## on ##DATE##.
 //  Copyright © 2015 Jochen Schweizer GmbH. All rights reserved.
 //
+
 class ##MODULENAME##Wireframe: NSObject {
 
     func present##MODULENAME##Interface() {
