@@ -41,14 +41,14 @@ func printFile(directory string, fileName string) {
     log.Fatal(err)
   }
 
-  r := strings.NewReplacer("##MODULENAME##", moduleName, "##PACKAGENAME##", packageName, "##USERNAME##", getUsername(), "##DATE##", getDate())
+  r := strings.NewReplacer("##MODULENAME##", moduleName, "##MODULENAME_UPPERCASE##", strings.ToUpper(moduleName), "##PACKAGENAME##", packageName, "##USERNAME##", getUsername(), "##DATE##", getDate())
   newString := r.Replace(string(data))
 
   ioutil.WriteFile(outputDir + "/" + moduleName + fileName, []byte(newString), 0777)
 }
 
 func getUsername() string {
-  var currentUser, err = user.Current();
+  var currentUser, err = user.Current()
 
   if err != nil {
     return "Unnamed"
@@ -58,25 +58,25 @@ func getUsername() string {
 }
 
 func getDate() string {
-  var t = time.Now();
+  var t = time.Now()
   return fmt.Sprintf("%v.%d.%v", t.Day(), t.Month(), t.Year())
 }
 
 func getConsoleInput() {
   reader := bufio.NewReader(os.Stdin)
-  fmt.Print("Enter template: (JAVA, SWIFT): ")
+  fmt.Print("Enter template (JAVA, SWIFT): ")
   templateDirectory, _ = reader.ReadString('\n')
   templateDirectory = strings.ToLower(strings.TrimRight(templateDirectory, "\n"))
-  fmt.Print("Enter module name(e.g. BasketList): ")
+  fmt.Print("Enter module name (e.g. BasketList): ")
   moduleName, _ = reader.ReadString('\n')
   moduleName = strings.TrimRight(moduleName, "\n")
   if (templateDirectory != "swift") {
-    fmt.Print("Enter Java PackageName(e.g. com.company.mylittleProject):")
+    fmt.Print("Enter Java PackageName (e.g. com.company.mylittleProject): ")
     packageName, _ = reader.ReadString('\n')
     packageName = strings.TrimRight(packageName, "\n")
   }
 
-  fmt.Print("Enter output path name (absolute): ")
+  fmt.Print("Enter absolute output path: ")
   outputDir, _ = reader.ReadString('\n')
   outputDir = strings.TrimRight(outputDir, "\n")
 }
