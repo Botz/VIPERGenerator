@@ -5,7 +5,7 @@ This is a code generator for [Clean Architecture](https://blog.8thlight.com/uncl
 
 ./VIPERGenerator
 
-- Enter Template(Swift, Java)
+- Enter Template(Swift, Java, JavaV2)
 - Enter modulename
 - For Java enter packagename
 
