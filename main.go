@@ -64,9 +64,19 @@ func getDate() string {
 
 func getConsoleInput() {
   reader := bufio.NewReader(os.Stdin)
-  fmt.Print("Enter template (JAVA, SWIFT): ")
-  templateDirectory, _ = reader.ReadString('\n')
-  templateDirectory = strings.ToLower(strings.TrimRight(templateDirectory, "\n"))
+
+  for true {
+    fmt.Print("Enter template (JAVA, JAVAV2, SWIFT): ")
+    templateDirectory, _ = reader.ReadString('\n')
+    templateDirectory = strings.ToLower(strings.TrimRight(templateDirectory, "\n"))
+
+    if (templateDirectory != "java" && templateDirectory != "javav2" && templateDirectory != "swift") {
+      continue
+    } else {
+      break
+    }
+  }
+
   fmt.Print("Enter module name (e.g. BasketList): ")
   moduleName, _ = reader.ReadString('\n')
   moduleName = strings.TrimRight(moduleName, "\n")
