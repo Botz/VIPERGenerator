@@ -18,16 +18,23 @@ import de.jochen_schweizer.jsnow.common.baseui.BaseDaggerActivity;
  * Created by ##USERNAME## on ##DATE##.
  */
 public class ##MODULENAME##Activity extends BaseDaggerActivity implements ##MODULENAME##PresenterOutput {
-    @Inject ##MODULENAME##PresenterInput mPresenter;
+    @Inject ##MODULENAME##PresenterInput presenter;
 
     @Override
     protected void onInjected(Bundle savedInstanceState) {
+        presenter.setPresenterOutput(this);
         ButterKnife.inject(this);
     }
 
     @Override
     protected List<Object> getActivityModules() {
-        return Arrays.<Object>asList(new ##MODULENAME##Module(this));
+        return Arrays.<Object>asList(new ##MODULENAME##Module());
+    }
+
+    @Override
+    protected void onDestroyDaggerInjector() {
+        super.onDestroyDaggerInjector();
+        presenter.onDestroy();
     }
 
     @Override

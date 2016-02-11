@@ -16,20 +16,16 @@ import de.jochen_schweizer.jsnow.application.JSNowModule;
 )
 public class ##MODULENAME##Module {
 
-    private ##MODULENAME##PresenterOutput mOutput;
+    public ##MODULENAME##Module() {
 
-    public ##MODULENAME##Module(##MODULENAME##PresenterOutput output) {
-        mOutput = output;
     }
 
-    @Provides
-    @Singleton
-    public ##MODULENAME##InteractorInput provide##MODULENAME##InteractorInput() {
+    @Provides @Singleton public ##MODULENAME##InteractorInput provide##MODULENAME##InteractorInput() {
         return new ##MODULENAME##Interactor();
     }
 
     @Provides @Singleton public ##MODULENAME##PresenterInput provide##MODULENAME##PresenterInput(##MODULENAME##InteractorInput interactor) {
-        ##MODULENAME##Presenter presenter = new ##MODULENAME##Presenter(mOutput, interactor);
+        ##MODULENAME##Presenter presenter = new ##MODULENAME##Presenter(interactor);
         interactor.setInteractorOutput(presenter);
         return presenter;
     }

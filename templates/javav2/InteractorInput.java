@@ -5,4 +5,5 @@ package ##PACKAGENAME##.##MODULENAME_PACKAGE##;
  */
 public interface ##MODULENAME##InteractorInput {
     void setInteractorOutput(##MODULENAME##InteractorOutput presenter);
+    void onDestroy();
 }

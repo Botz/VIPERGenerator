@@ -5,13 +5,18 @@ package ##PACKAGENAME##.##MODULENAME_PACKAGE##;
  */
 public class ##MODULENAME##Interactor implements ##MODULENAME##InteractorInput {
 
-    private ##MODULENAME##InteractorOutput mOutput;
+    private ##MODULENAME##InteractorOutput presenter;
 
     public ##MODULENAME##Interactor() {
     }
 
     @Override
     public void setInteractorOutput(##MODULENAME##InteractorOutput presenter) {
-        mOutput = presenter;
+        this.presenter = presenter;
+    }
+
+    @Override
+    public void onDestroy() {
+
     }
 }
