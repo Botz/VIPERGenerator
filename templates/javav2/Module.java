@@ -1,4 +1,4 @@
-package ##PACKAGENAME##.##MODULENAME##;
+package ##PACKAGENAME##.##MODULENAME_PACKAGE##;
 
 import javax.inject.Singleton;
 

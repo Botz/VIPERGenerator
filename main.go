@@ -4,6 +4,7 @@ import (
   "io/ioutil"
   "log"
   "strings"
+  "bytes"
   "os/user"
   "time"
   "fmt"
@@ -13,6 +14,7 @@ import (
 )
 
 var moduleName string
+var moduleNamePackage string
 var packageName string
 var templateDirectory string
 var outputDir string
@@ -26,7 +28,12 @@ func main() {
     log.Fatal(err)
   }
 
-  outputDir = outputDir + "/" + moduleName
+  if (templateDirectory != "swift") {
+    outputDir = outputDir + "/" + moduleNamePackage
+  } else {
+    outputDir = outputDir + "/" + moduleName
+  }
+
   os.Mkdir(outputDir, 0777)
 
   for _,fileInfo := range fileInfos {
@@ -41,7 +48,7 @@ func printFile(directory string, fileName string) {
     log.Fatal(err)
   }
 
-  r := strings.NewReplacer("##MODULENAME##", moduleName, "##MODULENAME_UPPERCASE##", strings.ToUpper(moduleName), "##PACKAGENAME##", packageName, "##USERNAME##", getUsername(), "##DATE##", getDate())
+  r := strings.NewReplacer("##MODULENAME##", moduleName, "##MODULENAME_PACKAGE##", moduleNamePackage, "##MODULENAME_UPPERCASE##", strings.ToUpper(moduleName), "##PACKAGENAME##", packageName, "##USERNAME##", getUsername(), "##DATE##", getDate())
   newString := r.Replace(string(data))
 
   ioutil.WriteFile(outputDir + "/" + moduleName + fileName, []byte(newString), 0777)
@@ -80,6 +87,8 @@ func getConsoleInput() {
   fmt.Print("Enter module name (e.g. BasketList): ")
   moduleName, _ = reader.ReadString('\n')
   moduleName = strings.TrimRight(moduleName, "\n")
+  moduleNamePackage = makeFirstLowerCase(moduleName)
+
   if (templateDirectory != "swift") {
     fmt.Print("Enter Java PackageName (e.g. com.company.mylittleProject): ")
     packageName, _ = reader.ReadString('\n')
@@ -89,4 +98,18 @@ func getConsoleInput() {
   fmt.Print("Enter absolute output path: ")
   outputDir, _ = reader.ReadString('\n')
   outputDir = strings.TrimRight(outputDir, "\n")
+}
+
+func makeFirstLowerCase(s string) string {
+
+    if len(s) < 2 {
+        return strings.ToLower(s)
+    }
+
+    bts := []byte(s)
+
+    lc := bytes.ToLower([]byte{bts[0]})
+    rest := bts[1:]
+
+    return string(bytes.Join([][]byte{lc, rest}, nil))
 }

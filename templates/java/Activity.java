@@ -1,4 +1,4 @@
-package de.jochen_schweizer.jsnow.module.##MODULENAME##;
+package ##PACKAGENAME##.##MODULENAME_PACKAGE##;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;

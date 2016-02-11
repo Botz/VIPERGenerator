@@ -1,4 +1,4 @@
-package de.jochen_schweizer.jsnow.module.##MODULENAME##;
+package ##PACKAGENAME##.##MODULENAME_PACKAGE##;
 
 import javax.inject.Singleton;
 

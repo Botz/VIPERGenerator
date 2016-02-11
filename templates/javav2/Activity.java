@@ -1,4 +1,4 @@
-package ##PACKAGENAME##.##MODULENAME##;
+package ##PACKAGENAME##.##MODULENAME_PACKAGE##;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
@@ -28,7 +28,7 @@ public class ##MODULENAME##Activity extends BaseDaggerActivity implements ##MODU
 
     @Override
     protected List<Object> getActivityModules() {
-        return Arrays.<Object>asList(new ##MODULENAME##Module(this));
+        return Arrays.<Object>asList(new ##MODULENAME##Module());
     }
 
     @Override
